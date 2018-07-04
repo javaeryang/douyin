@@ -1,5 +1,6 @@
 package xposed;
 
+import aweme.AwemeUI;
 import hook.Hook;
 
 /**
@@ -10,5 +11,7 @@ public class MainHook {
     public static void hookMain(ClassLoader classLoader){
 
         Hook.hook(classLoader);
+
+        AwemeUI.hookUI(classLoader);
     }
 }
