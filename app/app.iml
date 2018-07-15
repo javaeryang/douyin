@@ -106,7 +106,9 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 26 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="com.squareup.okio:okio:1.14.0@jar" level="project" />
     <orderEntry type="library" name="de.robv.android.xposed:api:82:sources@jar" level="project" />
     <orderEntry type="library" name="de.robv.android.xposed:api:82@jar" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp3:okhttp:3.11.0@jar" level="project" />
   </component>
 </module>

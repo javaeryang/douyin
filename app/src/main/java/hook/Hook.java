@@ -14,6 +14,9 @@ import log.Vlog;
  */
 
 public class Hook {
+
+    public static Object Holder;
+
     public static void hook(ClassLoader classLoader){
         XposedHelpers.findAndHookMethod("com.douyin.baseshare.a.a",
                 classLoader,
@@ -59,13 +62,28 @@ public class Hook {
                         Object video = XposedHelpers.getObjectField(param.args[0], "video");
                         Object url = XposedHelpers.getObjectField(video, "playAddr");
                         List<String> list = (List<String>) XposedHelpers.getObjectField(url, "urlList");
-                        if (list != null && list.size() > 0){
-                            for (String s : list){
-                                Vlog.log(">>>>"+s);
-                            }
+//                        if (list != null && list.size() > 0){
+//                            for (String s : list){
+//                                Vlog.log(">>>>"+s);
+//                            }
+//                        }
+                    }
+                }
+        );
+
+        XposedHelpers.findAndHookMethod("com.ss.android.ugc.aweme.feed.panel.BaseListFragmentPanel",
+                classLoader,
+                "D",
+                new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        Object ViewHolder = param.getResult();
+                        if (ViewHolder != null){
+                            Holder = ViewHolder;
                         }
                     }
                 }
         );
+
     }
 }

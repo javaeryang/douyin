@@ -31,14 +31,9 @@ public class AwemeUI {
                 new XC_MethodHook() {
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                        Vlog.log("com.douyin.baseshare.a.a>>>>onCreate");
+                        Vlog.log("com.douyin.baseshare.a.a>>>>onCreate"+param.thisObject);
                         FrameLayout r = (FrameLayout)
                                 XposedHelpers.getObjectField(param.thisObject, "r");
-//                        TextView textView = new TextView(globalActivity);
-//                        textView.setText("注入文字2");
-//                        textView.setTextColor(Color.RED);
-//                        r.addView(textView, 0);
-//                        Vlog.log("注入完毕2");
                         MyLinear myLinear = new MyLinear(globalActivity);
                         r.addView(myLinear);
                         Vlog.log("add view success");
