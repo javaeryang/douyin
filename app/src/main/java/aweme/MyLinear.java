@@ -25,6 +25,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import version.Version;
 
 /**
  * Created by javaer on 2018/7/5.
@@ -47,7 +48,7 @@ public class MyLinear extends LinearLayout implements AdapterView.OnItemClickLis
         LinearLayout.LayoutParams lv_params = new LayoutParams(LayoutParams.MATCH_PARENT,dp2px(50));
         lv_params.setMargins(dp2px(10), dp2px(10), dp2px(10), dp2px(0));
         listView.setLayoutParams(lv_params);
-        String[] str = new String[]{"下载无水印视频--小璇出品"};
+        String[] str = new String[]{"下载无水印视频"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, str);
         listView.setAdapter(adapter);
 
@@ -141,10 +142,10 @@ public class MyLinear extends LinearLayout implements AdapterView.OnItemClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position){
             case 0:
-                Object f = XposedHelpers.getObjectField(Hook.Holder, "f");
-                Object video = XposedHelpers.callMethod(f, "getVideo");
-                Object playAddr = XposedHelpers.getObjectField(video, "playAddr");
-                List<String> list = (List<String>) XposedHelpers.getObjectField(playAddr, "urlList");
+                Object f = XposedHelpers.getObjectField(Hook.Holder, Version.ViewHolder_Field_f);
+                Object video = XposedHelpers.callMethod(f, Version.Aweme_Method_getVideo);
+                Object playAddr = XposedHelpers.getObjectField(video, Version.Video_Field_playAddr);
+                List<String> list = (List<String>) XposedHelpers.getObjectField(playAddr, Version.UrlModel_Field_urlList);
                 Handler handler = new Handler(Looper.getMainLooper());
                 downLoad(list, mContext, handler);
                 Vlog.log("抖音助手");

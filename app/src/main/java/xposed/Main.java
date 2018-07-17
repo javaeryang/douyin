@@ -16,6 +16,7 @@ import version.Version;
 
 public class Main implements IXposedHookLoadPackage{
 
+    //com.ss.android.ugc.aweme
     public static String DY_PKG = "com.ss.android.ugc.aweme";
     public static Context globalContext;
     public static ClassLoader globalClassloader;
@@ -24,7 +25,6 @@ public class Main implements IXposedHookLoadPackage{
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         if (lpparam.packageName.equals(DY_PKG)){
-            Vlog.log("hello douyin!");
             XposedHelpers.findAndHookMethod(Application.class,
                 "onCreate",
                 new XC_MethodHook() {

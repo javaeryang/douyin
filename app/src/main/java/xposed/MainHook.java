@@ -1,7 +1,8 @@
 package xposed;
 
-import aweme.AwemeUI;
 import hook.Hook;
+import hook.HookAwemeUI;
+import hook.HookRemoveAd;
 
 /**
  * Created by javaer on 2018/7/3.
@@ -10,8 +11,20 @@ import hook.Hook;
 public class MainHook {
     public static void hookMain(ClassLoader classLoader){
 
-        Hook.hook(classLoader);
-
-        AwemeUI.hookUI(classLoader);
+        try {
+            Hook.hookViewHolder(classLoader);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
+        try {
+            HookAwemeUI.hookUI(classLoader);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
+        try {
+            HookRemoveAd.hookRemoveAd(classLoader);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
     }
 }
