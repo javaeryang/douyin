@@ -2,6 +2,7 @@ package xposed;
 
 import hook.Hook;
 import hook.HookAwemeUI;
+import hook.HookCommentUI;
 import hook.HookRemoveAd;
 
 /**
@@ -23,6 +24,11 @@ public class MainHook {
         }
         try {
             HookRemoveAd.hookRemoveAd(classLoader);
+        }catch (Throwable throwable){
+            throwable.printStackTrace();
+        }
+        try {
+            HookCommentUI.hookCommentUI(classLoader);
         }catch (Throwable throwable){
             throwable.printStackTrace();
         }
