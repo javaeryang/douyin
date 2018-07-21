@@ -26,7 +26,7 @@ public class HookCommentUI {
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                         Object o = param.getResult();
-                        Vlog.log("当前view>>"+o);
+                        Vlog.log("评论界面View>>"+o);
                         LinearLayout linearLayout = (LinearLayout) param.getResult();
                         if (linearLayout != null){
                             MyLinear myLinear = new MyLinear(HookAwemeUI.globalActivity);

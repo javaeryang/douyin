@@ -6,6 +6,8 @@ package version;
 
 public class Version {
 
+    //default version is 1.9.0
+
     public static String BaseListFragmentPanel = "com.ss.android.ugc.aweme.feed.panel.BaseListFragmentPanel";
     public static String BaseListFragmentPanel_Method_D = "D";
 
@@ -22,6 +24,7 @@ public class Version {
     public static String adapter_h_a = "a";
     public static String Aweme_Method_isAd = "isAd";
 
+    //adjust high versions
     public static void init(int version){
 
     }

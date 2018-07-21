@@ -142,6 +142,10 @@ public class MyLinear extends LinearLayout implements AdapterView.OnItemClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position){
             case 0:
+                if (Hook.Holder == null){
+                    Toast.makeText(mContext, "播放信息获取出错!", Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 Object f = XposedHelpers.getObjectField(Hook.Holder, Version.ViewHolder_Field_f);
                 Object video = XposedHelpers.callMethod(f, Version.Aweme_Method_getVideo);
                 Object playAddr = XposedHelpers.getObjectField(video, Version.Video_Field_playAddr);
