@@ -19,10 +19,10 @@ public class CustomButton extends Button {
     private void init() {
         int strokeWidth = 2;
         int roundRadius = 12;
-        int strokeColor = Color.parseColor("#606066");
+        int strokeColor = Color.parseColor("#606060");
 
         GradientDrawable drawable = new GradientDrawable();
-        drawable.setAlpha(80);
+        drawable.setAlpha(90);
         drawable.setCornerRadius(roundRadius);
         drawable.setStroke(strokeWidth, strokeColor);
         ColorStateList colorStateList = createColorStateList(0xffffffff, 0xffffff00, 0xff0000ff, 0xffff0000);
@@ -30,7 +30,7 @@ public class CustomButton extends Button {
         this.setBackground(drawable);
     }
 
-    private ColorStateList createColorStateList(int normal, int pressed, int focused, int unable) {
+    public static ColorStateList createColorStateList(int normal, int pressed, int focused, int unable) {
         int[] colors = new int[]{pressed, focused, normal, focused, unable, normal};
         int[][] states = new int[6][];
         states[0] = new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled};
