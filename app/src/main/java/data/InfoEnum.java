@@ -1,23 +1,22 @@
 package data;
 
 /**
- * Created by Administrator on 2018/7/22.
+ * Created by javaer on 2018/7/25.
  */
 
-public class Info {
+public enum InfoEnum {
 
-    //normal  0
-    //with subTitle  1
-    //update info  2
+    INFO_ENUM_JD(1, "JDHelper版本", "1.0"),
+    INFO_ENUM_DY(1, "抖音版本", "1.9.0"),
+    INFO_ENUM_MD(1, "关于插件", "Javaer"),
+    INFO_ENUM_AU(1, "支持一下", "welcome"),
+    INFO_ENUM_JO(1, "加入我们", "join")
+    ;
+    int type;
+    String title;
+    String subTitle;
 
-    private int type;
-    private String title;
-    private String subTitle;
-
-    public Info() {
-    }
-
-    public Info(int type, String title, String subTitle) {
+    InfoEnum(int type, String title, String subTitle) {
         this.type = type;
         this.title = title;
         this.subTitle = subTitle;

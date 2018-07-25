@@ -66,15 +66,11 @@ public class CustomLinearLayout extends ViewGroup{
                 t = layoutHeight;
                 b = t + childMeasureHeight;
             }
-            layoutWidth += childMeasureWidth + 10;////宽度累加
+            layoutWidth += childMeasureWidth + 20;////宽度累加
             if (childMeasureHeight > maxChildHeight){
-                maxChildHeight = childMeasureHeight + 10;
+                maxChildHeight = childMeasureHeight + 20;
             }
             child.layout(l, t, r, b);
         }
-    }
-
-    public void setLayoutParams(int matchParent, int matchParent1) {
-        super.setLayoutParams(new ViewGroup.LayoutParams(matchParent, matchParent1));
     }
 }
