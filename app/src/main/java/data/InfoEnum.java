@@ -10,8 +10,7 @@ public enum InfoEnum {
     INFO_ENUM_DY(1, "抖音版本", "1.9.0"),
     INFO_ENUM_MD(1, "关于插件", "Javaer"),
     INFO_ENUM_AU(1, "支持一下", "welcome"),
-    INFO_ENUM_JO(1, "加入我们", "join")
-    ;
+    INFO_ENUM_JO(1, "加入我们", "join");
     int type;
     String title;
     String subTitle;
