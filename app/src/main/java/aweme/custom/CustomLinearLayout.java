@@ -1,4 +1,4 @@
-package aweme;
+package aweme.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;

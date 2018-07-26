@@ -9,14 +9,18 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import aweme.CustomButton;
-import aweme.CustomLinearLayout;
+import aweme.custom.CustomButton;
+import aweme.custom.CustomLabelTextView;
+import aweme.custom.CustomLinearLayout;
 import aweme.ui.adapter.InfoAdapter;
 import data.Info;
 import data.InfoEnum;
 import util.PackageUtil;
 
 public class MainActivity extends Activity {
+
+    public static final String MAIN_PKG = "com.javaer.jdouyin";
+    public static final String DOUYIN_PKG = "com.ss.android.ugc.aweme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class MainActivity extends Activity {
         root.addView(linearLayout1);
         root.addView(linearLayout2);
 
+        CustomLabelTextView customLabelTextView = new CustomLabelTextView(this, "5455", "5555");
+        root.addView(customLabelTextView);
         setContentView(root);
 
 
@@ -71,7 +77,7 @@ public class MainActivity extends Activity {
             button_p.setMargins(10, 10, 10, 10);
             button.setLayoutParams(button_p);
             button.setText("1.9."+i);
-            button.setTextSize(button.dp2px(5));
+            button.setTextSize(button.dp2px(4.5f));
             button.setGravity(Gravity.CENTER);
             if (i == 1){
                 button.setEnabled(false);
@@ -98,12 +104,12 @@ public class MainActivity extends Activity {
         Info info = new Info();
         info.setType(1);
         info.setTitle("插件版本");
-        info.setSubTitle("build_"+ PackageUtil.getAppVersion("com.javaer.jdouyin", this));
+        info.setSubTitle("build_"+ PackageUtil.getAppVersion(MAIN_PKG, this));
         list.add(info);
         info = new Info();
         info.setType(1);
         info.setTitle("抖音版本");
-        info.setSubTitle(PackageUtil.getAppVersion("com.ss.android.ugc.aweme", this));
+        info.setSubTitle(PackageUtil.getAppVersion(DOUYIN_PKG, this));
         list.add(info);
         return list;
     }

@@ -1,34 +1,29 @@
-package aweme;
+package util;
 
-import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.widget.TextView;
 
 /**
- * Created by javaer on 2018/7/20.
+ * Created by Administrator on 2018/7/26.
  */
 
-public class CustomButton extends TextView {
-    public CustomButton(Context context) {
-        super(context);
-        init();
-    }
+public class ViewUtil {
 
-    private void init() {
-        int strokeWidth = 3;
-        int roundRadius = 12;
-        int strokeColor = Color.parseColor("#606060");
-
+    public static GradientDrawable createGradientDrawable(int strokeWidth, int roundRadius, int strokeColor){
         GradientDrawable drawable = new GradientDrawable();
         drawable.setCornerRadius(roundRadius);
         drawable.setStroke(strokeWidth, strokeColor);
-        ColorStateList colorStateList = createColorStateList(0xff4169e1, 0xaf4169e1, 0xff0000ff, 0xff000000);
-        drawable.setColor(colorStateList);
-        this.setBackground(drawable);
-        this.setClickable(true);
-        this.setTextColor(Color.WHITE);
+
+        return drawable;
+    }
+
+    public static GradientDrawable createGradientDrawableRadius(int strokeWidth, float[] Radius, int strokeColor){
+        GradientDrawable drawable = new GradientDrawable();
+//        drawable.setCornerRadius(roundRadius);
+        drawable.setCornerRadii(Radius);
+        drawable.setStroke(strokeWidth, strokeColor);
+
+        return drawable;
     }
 
     public static ColorStateList createColorStateList(int normal, int pressed, int focused, int unable) {
@@ -42,10 +37,5 @@ public class CustomButton extends TextView {
         states[5] = new int[]{};
         ColorStateList colorList = new ColorStateList(states, colors);
         return colorList;
-    }
-
-    public int dp2px(float dp){
-        final float scale = getContext().getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
     }
 }
