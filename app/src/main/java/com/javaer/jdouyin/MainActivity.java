@@ -14,6 +14,7 @@ import aweme.CustomLinearLayout;
 import aweme.ui.adapter.InfoAdapter;
 import data.Info;
 import data.InfoEnum;
+import util.PackageUtil;
 
 public class MainActivity extends Activity {
 
@@ -26,17 +27,28 @@ public class MainActivity extends Activity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         root.setLayoutParams(params);
-        root.setPadding(20, 20, 20, 20);
         root.setGravity(Gravity.CENTER_VERTICAL);
 
+        LinearLayout linearLayout1 = new LinearLayout(this);
+
+
         CustomLinearLayout layout = new CustomLinearLayout(this);
-        root.addView(layout);
+
+        LinearLayout linearLayout2 = new LinearLayout(this);
+        linearLayout2.addView(layout);
+        linearLayout2.setPadding(20, 20, 20, 20);
+
+        root.addView(linearLayout1);
+        root.addView(linearLayout2);
+
         setContentView(root);
 
-        init(layout);
+
+
+        init(linearLayout1, layout);
     }
 
-    public void init(CustomLinearLayout root){
+    public void init(LinearLayout linearLayout1, CustomLinearLayout layout){
 
         ListView listView = new ListView(this);
         listView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -47,7 +59,7 @@ public class MainActivity extends Activity {
         adapter.setItems(getList());
         listView.setAdapter(adapter);
 
-        root.addView(listView);
+        linearLayout1.addView(listView);
 
         for (int i = 0; i < 10; i++){
             CustomButton button = new CustomButton(this);
@@ -64,19 +76,36 @@ public class MainActivity extends Activity {
             if (i == 1){
                 button.setEnabled(false);
             }
-            root.addView(button);
+            layout.addView(button);
         }
     }
 
     private List<Info> getList(){
-        List<Info> infos = new ArrayList<>();
+        List<Info> list = new ArrayList<>();
+        list.addAll(getModel());
         for (InfoEnum infoEnum : InfoEnum.values()){
             Info info = new Info();
             info.setType(infoEnum.getType());
             info.setTitle(infoEnum.getTitle());
             info.setSubTitle(infoEnum.getSubTitle());
-            infos.add(info);
+            list.add(info);
         }
-        return infos;
+        return list;
     }
+
+    private List<Info> getModel(){
+        List<Info> list = new ArrayList<>();
+        Info info = new Info();
+        info.setType(1);
+        info.setTitle("插件版本");
+        info.setSubTitle("build_"+ PackageUtil.getAppVersion("com.javaer.jdouyin", this));
+        list.add(info);
+        info = new Info();
+        info.setType(1);
+        info.setTitle("抖音版本");
+        info.setSubTitle(PackageUtil.getAppVersion("com.ss.android.ugc.aweme", this));
+        list.add(info);
+        return list;
+    }
+
 }

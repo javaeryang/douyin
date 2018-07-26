@@ -1,6 +1,7 @@
 package aweme.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ public class InfoAdapter extends BaseListAdapter<Info>{
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
         RelativeLayout layout = new RelativeLayout(getContext());
-        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(40));
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(45));
         layout.setLayoutParams(layoutParams);
 
         TextView title = new TextView(getContext());
@@ -64,6 +65,8 @@ public class InfoAdapter extends BaseListAdapter<Info>{
         @Override
         public void onInitialize() {
             title_view = mItemView.findViewById(0);
+            title_view.setTextSize(dp2px(6));
+            title_view.setTextColor(Color.BLACK);
             subTitle_view = mItemView.findViewById(1);
         }
 
