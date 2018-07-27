@@ -32,7 +32,7 @@ public class InfoAdapter extends BaseListAdapter<Info>{
         title.setId(0);
         LayoutParams title_params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         title_params.addRule(RelativeLayout.CENTER_VERTICAL);
-        title_params.setMargins(dp2px(10), 0, 0, 0);
+        title_params.setMargins(dp2px(18), 0, 0, 0);
         title.setLayoutParams(title_params);
 
         TextView subTitle = new TextView(getContext());

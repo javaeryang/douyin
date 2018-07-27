@@ -9,7 +9,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import aweme.custom.CustomButton;
 import aweme.custom.CustomLabelTextView;
 import aweme.custom.CustomLinearLayout;
 import aweme.ui.adapter.InfoAdapter;
@@ -34,19 +33,22 @@ public class MainActivity extends Activity {
         root.setGravity(Gravity.CENTER_VERTICAL);
 
         LinearLayout linearLayout1 = new LinearLayout(this);
-
+        LinearLayout linearLayout2 = new LinearLayout(this);
+        linearLayout2.setPadding(20, 20, 20, 20);
+        linearLayout2.setLayoutParams(
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                ));
 
         CustomLinearLayout layout = new CustomLinearLayout(this);
 
-        LinearLayout linearLayout2 = new LinearLayout(this);
         linearLayout2.addView(layout);
-        linearLayout2.setPadding(20, 20, 20, 20);
+
 
         root.addView(linearLayout1);
         root.addView(linearLayout2);
 
-        CustomLabelTextView customLabelTextView = new CustomLabelTextView(this, "5455", "5555");
-        root.addView(customLabelTextView);
         setContentView(root);
 
 
@@ -68,21 +70,8 @@ public class MainActivity extends Activity {
         linearLayout1.addView(listView);
 
         for (int i = 0; i < 10; i++){
-            CustomButton button = new CustomButton(this);
-            button.setPadding(button.dp2px(10), 0, button.dp2px(10), 0);
-            LinearLayout.LayoutParams button_p =
-                    new LinearLayout.LayoutParams(
-                            button.dp2px(68),
-                            button.dp2px(30));
-            button_p.setMargins(10, 10, 10, 10);
-            button.setLayoutParams(button_p);
-            button.setText("1.9."+i);
-            button.setTextSize(button.dp2px(4.5f));
-            button.setGravity(Gravity.CENTER);
-            if (i == 1){
-                button.setEnabled(false);
-            }
-            layout.addView(button);
+            CustomLabelTextView customLabelTextView = new CustomLabelTextView(this, "测试文字", "test"+i);
+            layout.addView(customLabelTextView);
         }
     }
 

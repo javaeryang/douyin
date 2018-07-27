@@ -36,21 +36,21 @@ public class CustomLabelTextView extends LinearLayout{
 
     private void init(){
         this.setOrientation(HORIZONTAL);
-        this.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(120)));
-        this.setPadding(dp2px(10), dp2px(10), dp2px(10), dp2px(10));
-        LayoutParams tv_params = new LayoutParams(LayoutParams.WRAP_CONTENT, dp2px(20));
+        this.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, dp2px(40)));
+        this.setPadding(dp2px(10), 0, 0, dp2px(10));
+        LayoutParams tv_params = new LayoutParams(LayoutParams.WRAP_CONTENT, dp2px(24));
 
         TextView tv_left = new TextView(mContext);
         tv_left.setText(leftText);
         tv_left.setTextColor(Color.WHITE);
         tv_left.setClickable(true);
-        tv_left.setPadding(dp2px(10), 0, dp2px(10), 0);
+        tv_left.setPadding(dp2px(10), dp2px(2), dp2px(10), dp2px(2));
         GradientDrawable drawable1 = ViewUtil.createGradientDrawableRadius(2, new float[]{14, 14, 0, 0, 0, 0, 14, 14}, colorLeft);
         drawable1.setColor(ViewUtil.createColorStateList(
                 Color.parseColor("#58575c"),
-                Color.parseColor("#61a52a"),
+                Color.parseColor("#ae58575c"),
                 Color.parseColor("#58575c"),
-                Color.parseColor("#61a52a")));
+                Color.parseColor("#a158575c")));
         tv_left.setBackground(drawable1);
         tv_left.setLayoutParams(tv_params);
 
@@ -58,13 +58,13 @@ public class CustomLabelTextView extends LinearLayout{
         tv_right.setText(rightText);
         tv_right.setTextColor(Color.WHITE);
         tv_right.setClickable(true);
-        tv_right.setPadding(dp2px(10), 0, dp2px(10), 0);
+        tv_right.setPadding(dp2px(10), dp2px(2), dp2px(10), dp2px(2));
         GradientDrawable drawable2 = ViewUtil.createGradientDrawableRadius(2, new float[]{0, 0, 14, 14, 14, 14, 0, 0}, colorRight);
         drawable2.setColor(ViewUtil.createColorStateList(
                 Color.parseColor("#61a52a"),
-                Color.parseColor("#58575c"),
+                Color.parseColor("#ae61a52a"),
                 Color.parseColor("#61a52a"),
-                Color.parseColor("#58575c")));
+                Color.parseColor("#a161a52a")));
         tv_right.setBackground(drawable2);
         tv_right.setLayoutParams(tv_params);
 
