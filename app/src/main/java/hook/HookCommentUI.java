@@ -9,6 +9,7 @@ import aweme.MyLinear;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 import log.Vlog;
+import version.Version;
 
 /**
  * Created by Administrator on 2018/7/21.
@@ -16,7 +17,7 @@ import log.Vlog;
 
 public class HookCommentUI {
     public static void hookCommentUI(ClassLoader classLoader){
-        XposedHelpers.findAndHookMethod("com.ss.android.ugc.aweme.comment.ui.VideoCommentDialogFragment2",
+        XposedHelpers.findAndHookMethod(Version.VideoCommentDialogFragment2,
                 classLoader,
                 "onCreateView",
                 LayoutInflater.class,

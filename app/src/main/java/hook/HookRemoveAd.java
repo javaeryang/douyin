@@ -1,5 +1,9 @@
 package hook;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+
 import java.util.List;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -16,7 +20,7 @@ public class HookRemoveAd {
      * 移除广告
      * @param classLoader
      */
-    public static void hookRemoveAd(ClassLoader classLoader){
+    public static void hookRemoveAd(final ClassLoader classLoader){
         XposedHelpers.findAndHookMethod(Version.adapter_h,
                 classLoader,
                 Version.adapter_h_a,
@@ -35,6 +39,42 @@ public class HookRemoveAd {
                             }
                         }
                         param.args[0] = list;
+                    }
+                }
+        );
+
+        XposedHelpers.findAndHookMethod(Version.SplashActivity,
+                classLoader,
+                "onCreate",
+                Bundle.class,
+                new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        Activity activity = (Activity) param.thisObject;
+                        activity.finish();
+                        Intent intent = new Intent();
+                        Class Main = classLoader.loadClass(Version.MainActivity);
+                        intent.setClass(activity, Main);
+                        activity.startActivity(intent);
+                        Vlog.log("跳过首页onCreate");
+                    }
+                }
+        );
+
+        XposedHelpers.findAndHookMethod(Version.SplashAdActivity,
+                classLoader,
+                "onCreate",
+                Bundle.class,
+                new XC_MethodHook() {
+                    @Override
+                    protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                        Activity activity = (Activity) param.thisObject;
+                        activity.finish();
+                        Intent intent = new Intent();
+                        Class Main = classLoader.loadClass(Version.MainActivity);
+                        intent.setClass(activity, Main);
+                        activity.startActivity(intent);
+                        Vlog.log("跳过首页广告");
                     }
                 }
         );

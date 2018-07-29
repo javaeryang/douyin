@@ -3,6 +3,8 @@ package hook;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import aweme.MyLinear;
 import de.robv.android.xposed.XC_MethodHook;
@@ -39,11 +41,14 @@ public class HookAwemeUI {
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                         Vlog.log("com.douyin.baseshare.a.a>>>>onCreate"+param.thisObject);
-                        FrameLayout r = (FrameLayout)
+                        TextView r = (TextView)
                                 XposedHelpers.getObjectField(param.thisObject, Version.baseshare_a_a_filed_r);
                         MyLinear myLinear = new MyLinear(globalActivity);
-                        r.addView(myLinear);
-                        Vlog.log("add view success");
+
+                        LinearLayout parent = (LinearLayout) r.getParent(); //TextView的父布局
+
+                        parent.addView(myLinear, 0);
+                        Vlog.log("add view success"+r.getParent());
                     }
                 }
         );

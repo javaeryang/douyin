@@ -25,6 +25,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import util.Util;
 import version.Version;
 
 /**
@@ -97,7 +98,9 @@ public class MyLinear extends LinearLayout implements AdapterView.OnItemClickLis
 
                 InputStream is = response.body().byteStream();
                 int len = 0;
-                String directory = Environment.getExternalStorageDirectory().getAbsolutePath()+"/抖音助手";
+                String directory = Util.getDefaultCameraPath();
+
+                Vlog.log("保存目录>>>>"+directory);
 
                 File file = new File(directory);
                 if (!file.exists()){

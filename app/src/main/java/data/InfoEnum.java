@@ -6,8 +6,9 @@ package data;
 
 public enum InfoEnum {
     INFO_ENUM_MD(1, "关于插件", "Javaer"),
-    INFO_ENUM_AU(1, "支持一下", "welcome"),
-    INFO_ENUM_JO(1, "加入我们", "join");
+    INFO_ENUM_PA(1, "项目地址", "Star"),
+    INFO_ENUM_AU(1, "支持一下", "Welcome"),
+    INFO_ENUM_JO(1, "加入我们", "Join");
     int type;
     String title;
     String subTitle;
