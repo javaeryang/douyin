@@ -1,13 +1,17 @@
 package com.javaer.jdouyin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +19,14 @@ import java.util.Random;
 
 import aweme.custom.CustomLabelTextView;
 import aweme.custom.CustomLinearLayout;
+import aweme.custom.PlusButton;
 import aweme.ui.adapter.InfoAdapter;
 import data.Info;
 import data.InfoEnum;
 import data.VersionEnum;
 import util.PackageUtil;
 import util.Util;
+import util.ViewUtil;
 
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener{
 
@@ -54,9 +60,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
         root.addView(linearLayout1);
         root.addView(linearLayout2);
-
         setContentView(root);
-
 
 
         init(linearLayout1, layout);
@@ -96,6 +100,44 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                     CustomLabelTextView.randomColorString(colors));
             layout.addView(customLabelTextView);
         }
+
+        TextView tv_left = new TextView(this);
+        tv_left.setText("测试");
+        tv_left.setTextColor(Color.WHITE);
+        tv_left.setClickable(true);
+        tv_left.setPadding(dp2px(10), dp2px(2), dp2px(10), dp2px(2));
+        GradientDrawable drawable1 = ViewUtil.createGradientDrawableRadius(2, new float[]{14, 14, 0, 0, 0, 0, 14, 14}, Color.MAGENTA);
+        drawable1.setColor(ViewUtil.createColorStateList(
+                Color.parseColor("#58575c"),
+                Color.parseColor("#ae58575c"),
+                Color.parseColor("#58575c"),
+                Color.parseColor("#a158575c")));
+        tv_left.setBackground(drawable1);
+
+        LinearLayout.LayoutParams tv_params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, dp2px(24));
+
+        tv_left.setLayoutParams(tv_params);
+
+        layout.addView(tv_left);
+
+
+        PlusButton plusButton = new PlusButton(this);
+        plusButton.setText("测试按钮");
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "点击事件", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, TestActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+        layout.addView(plusButton);
+    }
+
+    public int dp2px(float dp){
+        final float scale = this.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
     }
 
     private void initModel(CustomLinearLayout layout){
